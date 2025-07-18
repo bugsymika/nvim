@@ -10,6 +10,20 @@ return {
 
 		local format_augroup = vim.api.nvim_create_augroup("LspFormat", { clear = true })
 
+		local erb_format = {
+			name = "erb-formatter",
+			method = null_ls.methods.FORMATTING,
+			filetypes = { "eruby" },
+			generator = null_ls.generator({
+				command = "bundle",
+				args = {
+					"exec", "erb-format",
+					"--stdin-filename", "$FILENAME",
+				},
+				to_stdin = true,
+				from_stderr = true,
+			}),
+		}
 		null_ls.setup({
 			sources = {
 				-- JS/TS/HTML/etc.
@@ -31,7 +45,6 @@ return {
 					to_stdin = true,
 					filetypes = { "ruby" },
 				}),
-
 				null_ls.builtins.diagnostics.rubocop.with({ -- 💥 diagnostics added
 					command = "bundle",
 					args = {

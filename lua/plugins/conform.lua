@@ -4,7 +4,7 @@ return {
 	opts = {
 		format_on_save = {
 			lsp_fallback = true,
-			timeout_ms = 3000,
+			timeout_ms = 500,
 		},
 		formatters_by_ft = {
 			eruby = { "erb_formatter" },

@@ -29,5 +29,6 @@ return {
 		vim.keymap.set("n", "<leader>ff", function() track("files") end, { desc = "FZF: Files" })
 		vim.keymap.set("n", "<leader>fg", function() track("live_grep") end, { desc = "FZF: Grep" })
 		vim.keymap.set("n", "<leader>fb", function() track("buffers") end, { desc = "FZF: Buffers" })
+		vim.keymap.set('n', '<leader>fr', '<cmd>FzfLua resume<cr>', { desc = 'Resume last search' })
 	end,
 }

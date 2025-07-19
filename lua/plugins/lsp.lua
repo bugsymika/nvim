@@ -38,7 +38,7 @@ return {
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = cmp.mapping.complete({}),
+					["<C-Space>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				sources = {
 					{ name = "nvim_lsp" },
@@ -82,7 +82,16 @@ return {
 					},
 				},
 				ts_ls = {},
-				ruby_lsp = {},
+				ruby_lsp = {
+					init_options = {
+						formatter = "none",
+					},
+					on_attach = function(client, bufnr)
+						-- Disable formatting capability
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentRangeFormattingProvider = false
+					end,
+				},
 			}
 
 			require("mason-lspconfig").setup({

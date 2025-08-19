@@ -78,6 +78,8 @@ return {
 							elixir = 'phoenix-heex',
 							heex = 'phoenix-heex',
 							eruby = 'erb',
+							tsx = 'typescriptreact',
+							jsx = 'javascriptreact',
 						},
 					},
 				},
